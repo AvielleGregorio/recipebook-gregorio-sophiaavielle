@@ -1,0 +1,3 @@
+recipebook/db.sqlite3
+recipebook/.env
+recipebook/**/**/__pycache__
