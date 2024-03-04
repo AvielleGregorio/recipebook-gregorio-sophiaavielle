@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Recipe 1</title>
+    <title>Recipe</title>
 </head>
 <body>
     <h1>Recipe Book</h1>
     <h2>{{name}}</h2>
     <p>Ingredients:</p>
     <ul>
-        {% for ingredient in ingredients %}
-        <li>{{ingredient.name}}, {{ingredient.quantity}}</li>
+        {% for ingredient in object.ingredients.all %}
+        <li>{{ingredient.ingredient.name}}, {{ingredient.quantity}}</li>
         {% endfor %}
     </ul>
 </body>
