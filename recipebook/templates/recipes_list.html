@@ -1,4 +1,19 @@
-<!DOCTYPE html>
+{% extends 'template.html' %}
+
+{% block title %}
+Recipes List
+{% endblock %}
+
+{% block mycontent %}
+<h1> Recipe Book </h1>
+<ul>
+    {% for recipe in object_list %}
+    <li><a href="{{recipe.get_absolute_url}}">{{recipe.name}}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Recipes List</title>
@@ -6,9 +21,9 @@
 <body>
     <h1> Recipe Book </h1>
     <ul>
-        {% for recipe in recipes %}
-        <li><a href="{{recipe.link}}">{{recipe.name}}</a></li>
+        {% for recipe in object_list %}
+        <li><a href="{{recipe.get_absolute_url}}">{{recipe.name}}</a></li>
         {% endfor %}
     </ul>
 </body>
-</html>
+</html> -->
