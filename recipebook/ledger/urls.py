@@ -7,5 +7,4 @@ path('recipe/<int:pk>', RecipeDetailView.as_view(), name='recipes'),
 
 ]
 
-# This might be needed, depending on your Django version
 app_name = "ledger"
