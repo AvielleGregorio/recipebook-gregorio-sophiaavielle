@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 
+from accounts.models import Profile
+
 class Ingredient(models.Model):
     name = models.CharField(max_length=100)
 
@@ -13,7 +15,14 @@ class Ingredient(models.Model):
 class Recipe(models.Model):
     
     name = models.CharField(max_length=100)
-
+    author = models.ForeignKey(
+          Profile, 
+          default=None, 
+          on_delete=models.CASCADE, 
+          related_name="author"
+    )
+    createdOn = models.DateTimeField(auto_now_add=True, null=True)
+    updatedOn = models.DateTimeField(auto_now=True, null=True)
     def __str__(self):
         return self.name
     
@@ -25,11 +34,11 @@ class RecipeIngredient(models.Model):
     ingredient = models.ForeignKey(
         'Ingredient', 
         on_delete=models.CASCADE, 
-        related_name='recipe' ####
+        related_name='recipe' 
     )
 
     recipe = models.ForeignKey(
         'Recipe', 
         on_delete=models.CASCADE, 
-        related_name='ingredients' ####
+        related_name='ingredients' 
     )
