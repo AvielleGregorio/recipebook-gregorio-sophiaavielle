@@ -5,12 +5,26 @@ Recipes List
 {% endblock %}
 
 {% block mycontent %}
+
 <h1> Recipe Book </h1>
-<ul>
-    {% for recipe in object_list %}
-    <li><a href="{{recipe.get_absolute_url}}">{{recipe.name}}</a></li>
-    {% endfor %}
-</ul>
+
+{%if request.user.is_authenticated%}
+        <h1>Hello {{request.user.username}}</h1>
+        <form action="{% url 'logout'%}" method="POST">
+            {%csrf_token%}
+            <button type="submit">LOG OUT</button>
+        </form>
+        {%else%}
+        <h1>Hello World</h1>
+        <a href="{% url 'login'}">LOGIN</a>
+        {%endif%}
+
+        <ul>
+            {% for recipe in object_list %}
+            <li><a href="{{recipe.get_absolute_url}}">{{recipe.name}}</a></li>
+            {% endfor %}
+        </ul>
+    
 {% endblock %}
 
 <!-- <!DOCTYPE html>

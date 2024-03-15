@@ -7,6 +7,8 @@ class RecipeIngredient(admin.TabularInline):
 
 class RecipeAdmin(admin.ModelAdmin):
     model = Recipe
-    inlines = [RecipeIngredient]
+    inlines = [RecipeIngredient,]
 
 admin.site.register(Recipe, RecipeAdmin)
+
+#Superuser credentials: polka, 1234567890, polka@gmail.com
